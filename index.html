@@ -3,114 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ישר מטבחים - עיצוב יוקרתי</title>
-    <!-- פונט מודרני לעברית -->
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>ישר מטבחים</title>
     <style>
-        :root {
-            --primary: #d4a373;
-            --dark: #222;
-            --light: #f9f7f3;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        body { 
-            font-family: 'Assistant', sans-serif; 
-            margin: 0; 
-            background-color: var(--light); 
-            color: var(--dark); 
-            line-height: 1.6;
-        }
-
-        /* כפתור צף סטייל יוקרתי */
-        .floating-order-btn {
-            position: fixed; top: 20px; left: 20px; z-index: 9999;
-            background-color: var(--dark); color: white; padding: 12px 25px;
-            border-radius: 50px; font-weight: 700; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            cursor: pointer; border: none; font-size: 14px; transition: 0.3s;
-        }
-        .floating-order-btn:hover { transform: translateY(-3px); background-color: var(--primary); }
-
-        .hero { 
-            padding: 100px 20px; text-align: center; background-color: #e9e5e0;
-        }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--dark); }
-        .hero p { font-size: 1.2rem; opacity: 0.8; }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-        /* גריד מודרני */
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 25px; 
-        }
-
-        /* מובייל - 2 תמונות בשורה */
-        @media (max-width: 768px) {
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .hero h1 { font-size: 2rem; }
-        }
-
-        .card { 
-            background: var(--white); 
-            border-radius: 15px; 
-            overflow: hidden; 
-            box-shadow: var(--shadow);
-            transition: 0.4s;
-        }
-        .card:hover { transform: translateY(-10px); }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; margin: 0; padding: 20px; text-align: center; }
         
-        .img-box { height: 180px; overflow: hidden; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .content { padding: 20px; text-align: center; }
-        .content h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
-        
-        .btn-card { 
-            display: inline-block; background: var(--primary); color: white; 
-            padding: 10px 20px; border-radius: 5px; text-decoration: none; 
-            margin-top: 10px; cursor: pointer; border: none; font-weight: 700;
+        /* כפתור צף */
+        .floating-btn {
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
+            background: #333; color: white; padding: 10px 20px;
+            border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
-        /* טופס */
-        .form-section { 
-            margin-top: 60px; padding: 40px; background: white; 
-            border-radius: 20px; box-shadow: var(--shadow);
+        /* גריד גמיש - מסתדר עם 5 תמונות */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: 40px auto;
         }
+
+        .card {
+            background: white;
+            width: 45%; /* גודל כרטיס למובייל (קצת פחות מ-50% כדי שייכנסו 2 בשורה) */
+            max-width: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .card h3 { padding: 10px 5px; margin: 0; font-size: 14px; }
+        .card button { width: 90%; margin-bottom: 10px; padding: 8px; background: #d4a373; border: none; color: white; border-radius: 5px; cursor: pointer; }
+
+        .form-section { background: white; max-width: 400px; margin: 20px auto; padding: 20px; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <button class="floating-order-btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">להזמנה מהירה</button>
+    <div class="floating-btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">להזמנה</div>
 
-    <div class="hero">
-        <h1>ישר מטבחים</h1>
-        <p>הסטנדרט החדש בעיצוב הבית</p>
+    <h1>ישר מטבחים</h1>
+
+    <div class="products-grid">
+        <!-- השמות מעודכנים בדיוק כמו ב-GitHub שלך -->
+        <div class="card"><img src="kitchen1.jpeg.jpeg" alt="מטבח"><h3>צבע לתנור</h3><button onclick="selectStyle('צבע לתנור')">בחר</button></div>
+        <div class="card"><img src="kitchen2.jpeg.jpeg" alt="מטבח"><h3>צבע אקריל</h3><button onclick="selectStyle('צבע אקריל')">בחר</button></div>
+        <div class="card"><img src="kitchen3.jpeg.jpeg" alt="מטבח"><h3>פורמייקה</h3><button onclick="selectStyle('פורמייקה')">בחר</button></div>
+        <div class="card"><img src="kitchen4.jpeg.jpeg" alt="חדר רחצה"><h3>חדר רחצה</h3><button onclick="selectStyle('חדר רחצה')">בחר</button></div>
+        <div class="card"><img src="kitchen5.jpeg.jpeg" alt="ארון"><h3>ארון בגדים</h3><button onclick="selectStyle('ארון בגדים')">בחר</button></div>
     </div>
 
-    <div class="container">
-        <div class="products-grid">
-            <div class="card"><div class="img-box"><img src="kitchen1.jpeg" alt="מטבח"></div><div class="content"><h3>צבע לתנור</h3><button class="btn-card" onclick="selectStyle('צבע לתנור')">בחר</button></div></div>
-            <div class="card"><div class="img-box"><img src="kitchen2.jpeg" alt="מטבח"></div><div class="content"><h3>צבע אקריל</h3><button class="btn-card" onclick="selectStyle('צבע אקריל')">בחר</button></div></div>
-            <div class="card"><div class="img-box"><img src="kitchen3.jpeg" alt="מטבח"></div><div class="content"><h3>פורמייקה</h3><button class="btn-card" onclick="selectStyle('פורמייקה')">בחר</button></div></div>
-            <div class="card"><div class="img-box"><img src="kitchen4.jpeg" alt="חדר רחצה"></div><div class="content"><h3>חדר רחצה</h3><button class="btn-card" onclick="selectStyle('חדר רחצה')">בחר</button></div></div>
-            <div class="card"><div class="img-box"><img src="kitchen5.jpeg" alt="ארון"></div><div class="content"><h3>ארון בגדים</h3><button class="btn-card" onclick="selectStyle('ארון בגדים')">בחר</button></div></div>
-        </div>
-
-        <div class="form-section" id="form">
-            <h2 style="text-align:center">השאירו פרטים ונחזור אליכם</h2>
-            <select id="style" style="width:100%; padding:15px; margin-bottom:10px; border-radius:8px;">
-                <option value="צבע לתנור">צבע לתנור</option>
-                <option value="צבע אקריל">צבע אקריל</option>
-                <option value="פורמייקה">פורמייקה</option>
-                <option value="חדר רחצה">חדר רחצה</option>
-                <option value="ארון בגדים">ארון בגדים</option>
-            </select>
-            <input type="text" id="name" placeholder="שם מלא" style="width:100%; padding:15px; box-sizing:border-box; margin-bottom:10px; border-radius:8px; border:1px solid #ccc;">
-            <button class="btn-card" style="width:100%; font-size:1.1rem;" onclick="send()">שלח לוואטסאפ</button>
-        </div>
+    <div class="form-section" id="form">
+        <h2>הזמנה</h2>
+        <select id="style" style="width:100%; padding:10px;">
+            <option>צבע לתנור</option>
+            <option>צבע אקריל</option>
+            <option>פורמייקה</option>
+            <option>חדר רחצה</option>
+            <option>ארון בגדים</option>
+        </select>
+        <br><br>
+        <input type="text" id="name" placeholder="שם מלא" style="width:95%; padding:10px;">
+        <br><br>
+        <button onclick="send()" style="width:100%; padding:15px; background:#333; color:white; border:none; border-radius:5px;">שלח לוואטסאפ</button>
     </div>
 
     <script>
