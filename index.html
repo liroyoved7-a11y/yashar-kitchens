@@ -24,29 +24,6 @@
             color: var(--dark);
         }
 
-        /* כפתור צף להזמנה */
-        .floating-order-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 9999;
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
-            border: none;
-            font-size: 14px;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .floating-order-btn:hover {
-            transform: scale(1.05);
-            background-color: var(--primary-hover);
-        }
-
         /* באנר עליון */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('kitchen1.jpeg.jpeg') no-repeat center center/cover;
@@ -55,9 +32,20 @@
             text-align: center;
         }
 
-        .hero h1 { font-size: 48px; margin: 0 0 10px 0; color: var(--primary); font-weight: 800; }
-        .hero p { font-size: 20px; margin: 0; color: #e2e8f0; }
+        .hero h1 {
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-weight: 800;
+        }
 
+        .hero p {
+            font-size: 20px;
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        /* שורת יתרונות */
         .features-row {
             background-color: white;
             padding: 25px 20px;
@@ -69,13 +57,53 @@
             flex-wrap: wrap;
         }
 
-        .feature-item { display: flex; align-items: center; gap: 15px; text-align: right; min-width: 250px; }
-        .feature-icon { font-size: 28px; background-color: #fef3c7; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .feature-text h4 { margin: 0; font-size: 18px; color: var(--dark-blue); font-weight: 700; }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: right;
+            min-width: 250px;
+        }
 
-        .main-content { max-width: 1200px; margin: 50px auto; padding: 0 20px; text-align: center; }
-        .section-title { font-size: 32px; font-weight: 700; margin-bottom: 10px; color: var(--dark-blue); }
-        .section-subtitle { font-size: 16px; color: #718096; margin-bottom: 40px; }
+        .feature-icon {
+            font-size: 28px;
+            background-color: #fef3c7;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .feature-text h4 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--dark-blue);
+            font-weight: 700;
+        }
+
+        /* אזור הגלריה והתוכן */
+        .main-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #718096;
+            margin-bottom: 40px;
+        }
 
         .products-grid {
             display: grid;
@@ -84,128 +112,526 @@
             margin-bottom: 60px;
         }
 
-        /* התאמה לנייד - 2 תמונות בשורה */
-        @media (max-width: 600px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 10px;
-            }
-            .product-card { padding-bottom: 5px; }
-            .product-details { padding: 10px; }
-            .product-title { font-size: 16px; }
-            .product-price-tag { font-size: 13px; margin-bottom: 5px; }
-            .product-description { display: none; } /* מסתיר תיאור בנייד כדי לחסוך מקום */
-            .buy-button { padding: 8px 5px; font-size: 12px; }
-            .image-wrapper { height: 120px; }
+        /* כרטיסיית מטבח */
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
         }
 
-        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; display: flex; flex-direction: column; border: 1px solid var(--border); }
-        .image-wrapper { position: relative; width: 100%; height: 240px; overflow: hidden; background-color: #e2e8f0; }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .image-wrapper img.fix-rotation { transform: rotate(-90deg) scale(1.4); }
-        
-        .product-details { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; text-align: right; }
-        .product-title { font-size: 22px; font-weight: 700; margin: 0 0 5px 0; color: var(--dark-blue); }
-        .product-price-tag { font-size: 16px; color: var(--primary); font-weight: 700; margin-bottom: 15px; }
-        .product-description { font-size: 15px; color: #4a5568; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
-        .buy-button { background-color: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 700; font-size: 16px; cursor: pointer; width: 100%; text-align: center; }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
 
-        .price-box { display: none; background-color: #f0fff4; border: 2px dashed var(--success); color: var(--success); padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: center; font-size: 18px; font-weight: 700; }
-        .form-container { display: none; max-width: 600px; margin: 60px auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: right; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 6px; }
-        .submit-button { background-color: var(--dark-blue); color: white; border: none; padding: 15px; border-radius: 6px; font-weight: 700; font-size: 18px; width: 100%; cursor: pointer; }
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background-color: #e2e8f0;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* תיקון סיבוב לתמונה ההפוכה (מטבח 2) */
+        .image-wrapper img.fix-rotation {
+            transform: rotate(-90deg) scale(1.4);
+        }
+
+        /* אפקט הובר מותאם לתמונה המסובבת */
+        .product-card:hover .image-wrapper img:not(.fix-rotation) {
+            transform: scale(1.08);
+        }
+
+        .product-card:hover .image-wrapper img.fix-rotation {
+            transform: rotate(-90deg) scale(1.5);
+        }
+
+        .product-details {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        .product-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: var(--dark-blue);
+        }
+
+        .product-price-tag {
+            font-size: 16px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .buy-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            box-shadow: 0 3px 6px rgba(229, 169, 59, 0.2);
+            text-align: center;
+        }
+
+        .buy-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* תיבת מחיר דינמית */
+        .price-box {
+            display: none;
+            background-color: #f0fff4;
+            border: 2px dashed var(--success);
+            color: var(--success);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* אזור הטופס */
+        .form-container {
+            display: none; 
+            max-width: 600px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            text-align: right;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-size: 32px;
+            color: var(--dark-blue);
+            margin-top: 0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-size: 15px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            font-family: inherit;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input.input-error, 
+        .form-group select.input-error,
+        .radio-group-container.input-error {
+            border-color: var(--error) !important;
+            background-color: #fff5f5 !important;
+            box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
+        }
+
+        .radio-group-container {
+            border: 1px solid transparent;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .radio-option input {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            background-color: var(--dark-blue);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #182533;
+        }
+
+        footer {
+            background-color: var(--dark-blue);
+            color: #a0aec0;
+            padding: 20px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-
-    <!-- כפתור צף -->
-    <button class="floating-order-btn" onclick="scrollToForm()">להזמנה</button>
 
     <div class="hero">
         <h1>ישר מטבחים</h1>
         <p>ייצור, עיצוב והתקנת מטבחים ברמת גימור מושלמת</p>
     </div>
 
-    <main class="main-content">
-        <h2 class="section-title">בחר את סגנון המטבח שלך</h2>
-        
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="image-wrapper"><img src="kitchen1.jpeg.jpeg" alt="מטבח מודרני"></div>
-                <div class="product-details">
-                    <h3 class="product-title">צבע לתנור</h3>
-                    <div class="product-price-tag">2,400 ₪ למטר</div>
-                    <p class="product-description">גימור יוקרתי ועמיד במיוחד.</p>
-                    <button class="buy-button" onclick="selectKitchen('צבע לתנור', '2,400 ₪ למטר')">אני רוצה</button>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="image-wrapper"><img src="kitchen2.jpeg.jpeg" class="fix-rotation" alt="צבע אקריל"></div>
-                <div class="product-details">
-                    <h3 class="product-title">צבע אקריל</h3>
-                    <div class="product-price-tag">2,500 ₪ למטר</div>
-                    <p class="product-description">מראה אחיד ועמיד לשריטות.</p>
-                    <button class="buy-button" onclick="selectKitchen('צבע אקריל', '2,500 ₪ למטר')">אני רוצה</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-wrapper"><img src="kitchen3.jpeg.jpeg" alt="פורמייקה"></div>
-                <div class="product-details">
-                    <h3 class="product-title">צבע לפורמייקה</h3>
-                    <div class="product-price-tag">1,800 ₪ למטר</div>
-                    <p class="product-description">עמידות גבוהה ומחיר מעולה.</p>
-                    <button class="buy-button" onclick="selectKitchen('צבע לפורמייקה רגיל', '1,800 ₪ למטר')">אני רוצה</button>
-                </div>
+    <!-- שורת היתרונות -->
+    <div class="features-row">
+        <div class="feature-item">
+            <div class="feature-icon">🥇</div>
+            <div class="feature-text">
+                <h4>חומרי הגלם הטובים ביותר!</h4>
             </div>
         </div>
+        <div class="feature-item">
+            <div class="feature-icon">⏱️</div>
+            <div class="feature-text">
+                <h4>עמידה קשוחה בזמנים</h4>
+            </div>
+        </div>
+    </div>
 
+    <main class="main-content">
+        <h2 class="section-title">בחר את סגנון המטבח שלך</h2>
+        <p class="section-subtitle">מגוון רחב של מטבחים מעוצבים שהותקנו ברמת הגימור הגבוהה ביותר בשוק</p>
+        
+        <div class="products-grid">
+            
+            <!-- מטבח 1 - צבע לתנור -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <img src="kitchen1.jpeg.jpeg" alt="מטבח מודרני בצבע לתנור">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">צבע לתנור</h3>
+                    <div class="product-price-tag">מחיר: 2,400 ₪ למטר</div>
+                    <p class="product-description">גימור חלק, יוקרתי ועמיד במיוחד בטכנולוגיית צביעה מתקדמת. מראה נקי ללא פשרות.</p>
+                    <button class="buy-button" onclick="selectKitchen('צבע לתנור', '2,400 ₪ למטר')">אני רוצה כזה</button>
+                </div>
+            </div>
+
+            <!-- מטבח 2 - צבע אקריל -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <img src="kitchen2.jpeg.jpeg" class="fix-rotation" alt="מטבח יוקרתי צבע אקריל">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">צבע אקריל</h3>
+                    <div class="product-price-tag">מחיר: 2,500 ₪ למטר</div>
+                    <p class="product-description">מראה אחיד, עמוק ומודרני עם עמידות גבוהה לשריטות וטביעות אצבע. הבחירה היוקרתית ביותר.</p>
+                    <button class="buy-button" onclick="selectKitchen('צבע אקריל', '2,500 ₪ למטר')">אני רוצה כזה</button>
+                </div>
+            </div>
+
+            <!-- מטבח 3 - צבע לפורמייקה רגיל -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <img src="kitchen3.jpeg.jpeg" alt="מטבח פורמייקה מעוצב">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">צבע לפורמייקה רגיל</h3>
+                    <div class="product-price-tag">מחיר: 1,800 ₪ למטר</div>
+                    <p class="product-description">השילוב המושלם בין מחיר אטרקטיבי, נוחות תחזוקה מקסימלית ועמידות חזקה לאורך שנים.</p>
+                    <button class="buy-button" onclick="selectKitchen('צבע לפורמייקה רגיל', '1,800 ₪ למטר')">אני רוצה כזה</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- טופס בקשת הצעת מחיר -->
         <div class="form-container" id="lead-form">
             <h2>בקשת הצעת מחיר</h2>
+            
             <div id="dynamic-price-box" class="price-box"></div>
+
             <form onsubmit="validateAndSend(event)">
                 <div class="form-group">
-                    <label>סגנון המטבח:</label>
-                    <select id="kitchen-style">
-                        <option value="צבע לתנור">צבע לתנור</option>
-                        <option value="צבע אקריל">צבע אקריל</option>
-                        <option value="צבע לפורמייקה רגיל">צבע לפורמייקה רגיל</option>
+                    <label for="kitchen-style">סגנון המטבח שנבחר:</label>
+                    <select id="kitchen-style" onchange="updatePriceOnSelectChange()">
+                        <option value="">-- בחר סגנון --</option>
+                        <option value="צבע לתנור">צבע לתנור (2,400 ₪ למטר)</option>
+                        <option value="צבע אקריל">צבע אקריל (2,500 ₪ למטר)</option>
+                        <option value="צבע לפורמייקה רגיל">צבע לפורמייקה רגיל (1,800 ₪ למטר)</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label>שם מלא:</label>
-                    <input type="text" id="fullname" required>
+                    <label>סטטוס הפרויקט (מאיפה הגעת אלינו?):</label>
+                    <div id="status-container" class="radio-group-container">
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="project-status" value="שיפוץ מטבח קיים">
+                                שיפוץ מטבח קיים
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="project-status" value="מטבח חדש לגמרי">
+                                מטבח חדש לגמרי
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="submit-button">שלח לוואטסאפ</button>
+
+                <div class="form-group">
+                    <label for="location">איפה עושים את המטבח? (עיר / יישוב):</label>
+                    <input type="text" id="location" list="cities-list" placeholder="התחל להקליד עיר (למשל: באר...)">
+                    <datalist id="cities-list">
+                        <option value="באר יעקב">
+                        <option value="באר שבע">
+                        <option value="ירושלים">
+                        <option value="תל אביב - יפו">
+                        <option value="חיפה">
+                        <option value="ראשון לציון">
+                        <option value="פתח תקווה">
+                        <option value="אשדוד">
+                        <option value="נתניה">
+                        <option value="בני ברק">
+                        <option value="חולון">
+                        <option value="רמת גן">
+                        <option value="אשקלון">
+                        <option value="רחובות">
+                        <option value="בית שמש">
+                        <option value="בת ים">
+                        <option value="הרצליה">
+                        <option value="כפר סבא">
+                        <option value="חדרה">
+                        <option value="מודיעין-מכבים-רעות">
+                        <option value="לוד">
+                        <option value="רמלה">
+                        <option value="רעננה">
+                        <option value="גבעתיים">
+                        <option value="הוד השרון">
+                        <option value="נהריה">
+                        <option value="קרית גת">
+                        <option value="נצרת">
+                        <option value="ראש העין">
+                        <option value="עפולה">
+                        <option value="אילת">
+                        <option value="נס ציונה">
+                        <option value="כרמיאל">
+                        <option value="טבריה">
+                        <option value="קרית מוצקין">
+                        <option value="קרית ביאליק">
+                        <option value="קרית אתא">
+                        <option value="קרית ים">
+                        <option value="אור יהודה">
+                        <option value="גבעת שמואל">
+                        <option value="יהוד-מונסון">
+                        <option value="טירת כרמל">
+                        <option value="נשר">
+                        <option value="יבנה">
+                        <option value="מגדל העמק">
+                        <option value="מעלות-תרשיחא">
+                        <option value="שדרות">
+                        <option value="נתיבות">
+                        <option value="אופקים">
+                        <option value="ערד">
+                        <option value="דימונה">
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullname">שם מלא:</label>
+                    <input type="text" id="fullname" placeholder="הכנס את שמך">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">הערות נוספות (מידות משוערות, בקשות מיוחדות):</label>
+                    <textarea id="notes" rows="4" placeholder="ספר לנו קצת על המטבח שאתה חולם עליו..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">שלח לבקשת הצעת מחיר לדוד</button>
             </form>
         </div>
     </main>
 
+    <footer style="text-align: center;">
+        <p>© 2026 ישר מטבחים - כל הזכויות שמורות.</p>
+    </footer>
+
     <script>
-        function scrollToForm() {
-            const formContainer = document.getElementById('lead-form');
-            formContainer.style.display = 'block';
-            formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        const priceList = {
+            'צבע לתנור': '2,400 ₪ למטר',
+            'צבע אקריל': '2,500 ₪ למטר',
+            'צבע לפורמייקה רגיל': '1,800 ₪ למטר'
+        };
 
         function selectKitchen(styleKey, priceRange) {
-            scrollToForm();
+            const formContainer = document.getElementById('lead-form');
+            formContainer.style.display = 'block';
+
             document.getElementById('kitchen-style').value = styleKey;
+            
             const priceBox = document.getElementById('dynamic-price-box');
-            priceBox.innerHTML = `💰 מחיר: <strong>${priceRange}</strong>`;
+            priceBox.innerHTML = `💰 מחיר מעודכן לסגנון זה: <strong>${priceRange}</strong>`;
             priceBox.style.display = 'block';
+            
+            document.getElementById('kitchen-style').classList.remove('input-error');
+
+            formContainer.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function updatePriceOnSelectChange() {
+            const selectedStyle = document.getElementById('kitchen-style').value;
+            const priceBox = document.getElementById('dynamic-price-box');
+            
+            document.getElementById('kitchen-style').classList.remove('input-error');
+
+            if(selectedStyle && priceList[selectedStyle]) {
+                priceBox.innerHTML = `💰 מחיר מעודכן לסגנון זה: <strong>${priceList[selectedStyle]}</strong>`;
+                priceBox.style.display = 'block';
+            } else {
+                priceBox.style.display = 'none';
+            }
         }
 
         function validateAndSend(event) {
             event.preventDefault();
-            const style = document.getElementById('kitchen-style').value;
-            const name = document.getElementById('fullname').value;
-            const msg = `היי דוד, אני מעוניין ב-${style}. שמי: ${name}`;
-            window.open(`https://wa.me/972584988888?text=${encodeURIComponent(msg)}`, '_blank');
+
+            const style = document.getElementById('kitchen-style');
+            const location = document.getElementById('location');
+            const fullname = document.getElementById('fullname');
+            const notes = document.getElementById('notes').value;
+            const statusContainer = document.getElementById('status-container');
+            
+            const statusRadios = document.getElementsByName('project-status');
+            let statusValue = "";
+            for (const radio of statusRadios) {
+                if (radio.checked) {
+                    statusValue = radio.value;
+                }
+            }
+
+            let isValid = true;
+
+            style.classList.remove('input-error');
+            location.classList.remove('input-error');
+            fullname.classList.remove('input-error');
+            statusContainer.classList.remove('input-error');
+
+            if (!style.value) {
+                style.classList.add('input-error');
+                isValid = false;
+            }
+            if (!statusValue) {
+                statusContainer.classList.add('input-error');
+                isValid = false;
+            }
+            if (!location.value.trim()) {
+                location.classList.add('input-error');
+                isValid = false;
+            }
+            if (!fullname.value.trim()) {
+                fullname.classList.add('input-error');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                alert("נא למלא את כל שדות החובה המסומנים באדום.");
+                return;
+            }
+
+            const davidNumber = "972584988888";
+            const whatsappMessage = `היי דוד, שלחתי בקשה להצעת מחיר למטבח דרך האתר:\n\n` +
+                                    `🔹 *סגנון וגימור:* ${style.value}\n` +
+                                    `🔹 *מחיר בסיס:* ${priceList[style.value] || 'לפי מידות'}\n` +
+                                    `🔹 *סטטוס הפרויקט:* ${statusValue}\n` +
+                                    `🔹 *מיקום בארץ:* ${location.value}\n` +
+                                    `🔹 *שם הלקוח:* ${fullname.value}\n` +
+                                    `🔹 *הערות נוספות:* ${notes.trim() ? notes.trim() : 'אין הערות נוספות.'}`;
+
+            const finalUrl = `https://wa.me/${davidNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(finalUrl, '_blank');
         }
+
+        document.getElementById('location').addEventListener('input', function() { this.classList.remove('input-error'); });
+        document.getElementById('fullname').addEventListener('input', function() { this.classList.remove('input-error'); });
+        document.getElementsByName('project-status').forEach(radio => {
+            radio.addEventListener('change', function() { document.getElementById('status-container').classList.remove('input-error'); });
+        });
     </script>
 </body>
 </html>
