@@ -9,100 +9,39 @@
             --primary: #d4a373;
             --primary-hover: #b5895f;
             --dark: #2d3436;
-            --bg-gray: #f8f9fa; /* אפור בהיר מאוד לרקע סעיפים */
-            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --border: #e2e8f0;
         }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            background-color: var(--white);
-            color: var(--dark);
-            line-height: 1.6;
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #fcfcfc; color: var(--dark); }
+
+        /* באנר */
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('kitchen1.jpeg.jpeg') center/cover; color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 10px; }
+
+        /* אזור הכרטיסיות */
+        .main-content { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        .product-card { 
+            background: white; border-radius: 16px; overflow: hidden; 
+            border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
         }
-
-        /* Hero Section - השער */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('kitchen1.jpeg.jpeg') no-repeat center center/cover;
-            color: white;
-            padding: 120px 20px;
-            text-align: center;
-        }
-
-        .hero h1 { font-size: 55px; margin: 0 0 15px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero p { font-size: 22px; margin: 0; opacity: 0.9; }
-
-        /* Features Section - הפרדה ויזואלית */
-        .features-row {
-            background-color: var(--bg-gray);
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            border-top: 1px solid #e9ecef;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .feature-item { display: flex; align-items: center; gap: 15px; }
-        .feature-icon { font-size: 30px; }
-
-        /* Main Content */
-        .main-content { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .section-title { text-align: center; font-size: 40px; margin-bottom: 50px; color: var(--dark); }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        /* Cards Design */
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #eee;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .product-card:hover {
-            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
-            transform: translateY(-10px);
-        }
-
-        .image-wrapper { height: 250px; overflow: hidden; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .image-wrapper { height: 220px; background: #eee; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .product-details { padding: 25px; text-align: right; }
-        .product-title { font-size: 24px; margin: 0 0 10px 0; }
-        .product-price-tag { color: var(--primary); font-weight: bold; margin-bottom: 15px; font-size: 18px; }
-        
-        .buy-button {
-            background-color: var(--dark);
-            color: white;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .buy-button:hover { background-color: var(--primary); }
+        .product-details { padding: 20px; text-align: right; }
+        .buy-button { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
-        /* Form */
-        .form-container { 
-            display: none; 
-            margin-top: 80px; 
-            background: var(--bg-gray); 
-            padding: 50px; 
-            border-radius: 20px; 
-        }
-        
-        input, select, textarea { width: 100%; padding: 15px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .submit-button { background-color: var(--primary); color: white; border: none; padding: 20px; width: 100%; font-size: 18px; border-radius: 10px; cursor: pointer; }
-
+        /* טופס */
+        .form-container { display: none; margin: 60px auto; background: white; padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; box-sizing: border-box; }
+        .radio-group { display: flex; gap: 20px; margin-top: 5px; }
+        .submit-button { background: var(--dark); color: white; width: 100%; padding: 15px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; }
+        .input-error { border-color: red !important; background-color: #fff5f5; }
     </style>
 </head>
 <body>
@@ -112,62 +51,84 @@
         <p>מגשימים לכם את המטבח שתמיד חלמתם עליו</p>
     </div>
 
-    <div class="features-row">
-        <div class="feature-item">
-            <div class="feature-icon">🥇</div>
-            <div><strong>איכות ללא פשרות</strong></div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">⏱️</div>
-            <div><strong>עמידה מדויקת בזמנים</strong></div>
-        </div>
-    </div>
-
     <main class="main-content">
-        <h2 class="section-title">הקולקציות שלנו</h2>
-        
+        <h2 style="text-align: center; margin-bottom: 40px;">הקולקציות שלנו</h2>
         <div class="products-grid">
-            <!-- כרטיסיה 1 -->
+            <!-- מטבח 1-5 -->
             <div class="product-card">
                 <div class="image-wrapper"><img src="kitchen1.jpeg.jpeg" alt="מטבח"></div>
                 <div class="product-details">
-                    <h3 class="product-title">צבע לתנור</h3>
-                    <div class="product-price-tag">2,400 ₪ למטר</div>
-                    <button class="buy-button" onclick="selectKitchen('צבע לתנור', '2,400 ₪ למטר')">לבחירת דגם זה</button>
+                    <h3>צבע לתנור</h3>
+                    <p style="color: var(--primary); font-weight: bold;">2,400 ₪ למטר</p>
+                    <button class="buy-button" onclick="selectKitchen('צבע לתנור', '2,400 ₪ למטר')">לבחירה</button>
                 </div>
             </div>
-
-            <!-- כרטיסיה 2 -->
             <div class="product-card">
                 <div class="image-wrapper"><img src="kitchen2.jpeg.jpeg" alt="מטבח"></div>
                 <div class="product-details">
-                    <h3 class="product-title">צבע אקריל</h3>
-                    <div class="product-price-tag">2,500 ₪ למטר</div>
-                    <button class="buy-button" onclick="selectKitchen('צבע אקריל', '2,500 ₪ למטר')">לבחירת דגם זה</button>
+                    <h3>צבע אקריל</h3>
+                    <p style="color: var(--primary); font-weight: bold;">2,500 ₪ למטר</p>
+                    <button class="buy-button" onclick="selectKitchen('צבע אקריל', '2,500 ₪ למטר')">לבחירה</button>
                 </div>
             </div>
-
-            <!-- כרטיסיה 3 -->
             <div class="product-card">
                 <div class="image-wrapper"><img src="kitchen3.jpeg.jpeg" alt="מטבח"></div>
                 <div class="product-details">
-                    <h3 class="product-title">פורמייקה</h3>
-                    <div class="product-price-tag">1,800 ₪ למטר</div>
-                    <button class="buy-button" onclick="selectKitchen('צבע לפורמייקה', '1,800 ₪ למטר')">לבחירת דגם זה</button>
+                    <h3>צבע לפורמייקה</h3>
+                    <p style="color: var(--primary); font-weight: bold;">1,800 ₪ למטר</p>
+                    <button class="buy-button" onclick="selectKitchen('צבע לפורמייקה', '1,800 ₪ למטר')">לבחירה</button>
+                </div>
+            </div>
+            <!-- מטבחים חדשים -->
+            <div class="product-card">
+                <div class="image-wrapper"><img src="kitchen4.jpeg" alt="מטבח כפרי"></div>
+                <div class="product-details">
+                    <h3>מטבח כפרי</h3>
+                    <p style="color: var(--primary); font-weight: bold;">2,200 ₪ למטר</p>
+                    <button class="buy-button" onclick="selectKitchen('מטבח כפרי', '2,200 ₪ למטר')">לבחירה</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="image-wrapper"><img src="kitchen5.jpeg" alt="מטבח עץ מלא"></div>
+                <div class="product-details">
+                    <h3>מטבח עץ מלא</h3>
+                    <p style="color: var(--primary); font-weight: bold;">3,000 ₪ למטר</p>
+                    <button class="buy-button" onclick="selectKitchen('מטבח עץ מלא', '3,000 ₪ למטר')">לבחירה</button>
                 </div>
             </div>
         </div>
 
+        <!-- טופס ההזמנה -->
         <div class="form-container" id="lead-form">
-            <h2>פרטי הזמנה</h2>
+            <h2>בקשת הצעת מחיר</h2>
             <form onsubmit="validateAndSend(event)">
-                <label>סגנון נבחר:</label>
-                <select id="kitchen-style"></select>
-                <label>שם מלא:</label>
-                <input type="text" id="fullname" required>
-                <label>הערות:</label>
-                <textarea id="notes"></textarea>
-                <button type="submit" class="submit-button" style="margin-top: 20px;">שליחה לוואטסאפ</button>
+                <div class="form-group">
+                    <label>סגנון מטבח:</label>
+                    <select id="kitchen-style">
+                        <option value="צבע לתנור">צבע לתנור</option>
+                        <option value="צבע אקריל">צבע אקריל</option>
+                        <option value="צבע לפורמייקה">צבע לפורמייקה</option>
+                        <option value="מטבח כפרי">מטבח כפרי</option>
+                        <option value="מטבח עץ מלא">מטבח עץ מלא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>סטטוס הפרויקט:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="status" value="שיפוץ קיים"> שיפוץ קיים</label>
+                        <label><input type="radio" name="status" value="מטבח חדש"> מטבח חדש</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>עיר:</label>
+                    <input type="text" id="location" list="cities">
+                    <datalist id="cities"><option value="באר שבע"><option value="תל אביב"><option value="ירושלים"></datalist>
+                </div>
+                <div class="form-group">
+                    <label>שם מלא:</label>
+                    <input type="text" id="fullname">
+                </div>
+                <button type="submit" class="submit-button">שליחה לוואטסאפ</button>
             </form>
         </div>
     </main>
@@ -175,15 +136,21 @@
     <script>
         function selectKitchen(style, price) {
             document.getElementById('lead-form').style.display = 'block';
-            document.getElementById('kitchen-style').innerHTML = `<option>${style} (${price})</option>`;
+            document.getElementById('kitchen-style').value = style;
             document.getElementById('lead-form').scrollIntoView({behavior: 'smooth'});
         }
 
         function validateAndSend(e) {
             e.preventDefault();
-            const s = document.getElementById('kitchen-style').value;
-            const n = document.getElementById('fullname').value;
-            window.open(`https://wa.me/972584988888?text=היי דוד, אני מעוניין ב-${s}. שמי: ${n}`, '_blank');
+            const style = document.getElementById('kitchen-style').value;
+            const name = document.getElementById('fullname').value;
+            const loc = document.getElementById('location').value;
+            const status = document.querySelector('input[name="status"]:checked')?.value || "לא נבחר";
+            
+            if(!name || !loc) { alert("נא למלא את כל השדות!"); return; }
+
+            const msg = `היי דוד, אני מעוניין ב-${style}. שם: ${name}, מיקום: ${loc}, סטטוס: ${status}`;
+            window.open(`https://wa.me/972584988888?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
