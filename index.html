@@ -3,87 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ישר מטבחים</title>
+    <title>ישר מטבחים - עיצוב והתקנה</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; margin: 0; padding: 20px; text-align: center; }
-        
-        /* כפתור צף */
-        .floating-btn {
-            position: fixed; top: 20px; left: 20px; z-index: 1000;
-            background: #333; color: white; padding: 10px 20px;
-            border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        :root {
+            --primary: #d4a373;
+            --primary-hover: #b5895f;
+            --dark: #2d3436;
+            --bg-gray: #f8f9fa; /* אפור בהיר מאוד לרקע סעיפים */
+            --white: #ffffff;
         }
 
-        /* גריד גמיש - מסתדר עם 5 תמונות */
-        .products-grid {
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Hero Section - השער */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('kitchen1.jpeg.jpeg') no-repeat center center/cover;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 55px; margin: 0 0 15px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 22px; margin: 0; opacity: 0.9; }
+
+        /* Features Section - הפרדה ויזואלית */
+        .features-row {
+            background-color: var(--bg-gray);
+            padding: 40px 20px;
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            max-width: 900px;
-            margin: 40px auto;
+            gap: 60px;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
         }
 
-        .card {
+        .feature-item { display: flex; align-items: center; gap: 15px; }
+        .feature-icon { font-size: 30px; }
+
+        /* Main Content */
+        .main-content { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 40px; margin-bottom: 50px; color: var(--dark); }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        /* Cards Design */
+        .product-card {
             background: white;
-            width: 45%; /* גודל כרטיס למובייל (קצת פחות מ-50% כדי שייכנסו 2 בשורה) */
-            max-width: 200px;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .card img {
+        .product-card:hover {
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+        }
+
+        .image-wrapper { height: 250px; overflow: hidden; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .product-details { padding: 25px; text-align: right; }
+        .product-title { font-size: 24px; margin: 0 0 10px 0; }
+        .product-price-tag { color: var(--primary); font-weight: bold; margin-bottom: 15px; font-size: 18px; }
+        
+        .buy-button {
+            background-color: var(--dark);
+            color: white;
             width: 100%;
-            height: 120px;
-            object-fit: cover;
-            background: #eee;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
         }
+        .buy-button:hover { background-color: var(--primary); }
 
-        .card h3 { padding: 10px 5px; margin: 0; font-size: 14px; }
-        .card button { width: 90%; margin-bottom: 10px; padding: 8px; background: #d4a373; border: none; color: white; border-radius: 5px; cursor: pointer; }
+        /* Form */
+        .form-container { 
+            display: none; 
+            margin-top: 80px; 
+            background: var(--bg-gray); 
+            padding: 50px; 
+            border-radius: 20px; 
+        }
+        
+        input, select, textarea { width: 100%; padding: 15px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .submit-button { background-color: var(--primary); color: white; border: none; padding: 20px; width: 100%; font-size: 18px; border-radius: 10px; cursor: pointer; }
 
-        .form-section { background: white; max-width: 400px; margin: 20px auto; padding: 20px; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="floating-btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">להזמנה</div>
-
-    <h1>ישר מטבחים</h1>
-
-    <div class="products-grid">
-        <!-- השמות מעודכנים בדיוק כמו ב-GitHub שלך -->
-        <div class="card"><img src="kitchen1.jpeg.jpeg" alt="מטבח"><h3>צבע לתנור</h3><button onclick="selectStyle('צבע לתנור')">בחר</button></div>
-        <div class="card"><img src="kitchen2.jpeg.jpeg" alt="מטבח"><h3>צבע אקריל</h3><button onclick="selectStyle('צבע אקריל')">בחר</button></div>
-        <div class="card"><img src="kitchen3.jpeg.jpeg" alt="מטבח"><h3>פורמייקה</h3><button onclick="selectStyle('פורמייקה')">בחר</button></div>
-        <div class="card"><img src="kitchen4.jpeg.jpeg" alt="חדר רחצה"><h3>חדר רחצה</h3><button onclick="selectStyle('חדר רחצה')">בחר</button></div>
-        <div class="card"><img src="kitchen5.jpeg.jpeg" alt="ארון"><h3>ארון בגדים</h3><button onclick="selectStyle('ארון בגדים')">בחר</button></div>
+    <div class="hero">
+        <h1>ישר מטבחים</h1>
+        <p>מגשימים לכם את המטבח שתמיד חלמתם עליו</p>
     </div>
 
-    <div class="form-section" id="form">
-        <h2>הזמנה</h2>
-        <select id="style" style="width:100%; padding:10px;">
-            <option>צבע לתנור</option>
-            <option>צבע אקריל</option>
-            <option>פורמייקה</option>
-            <option>חדר רחצה</option>
-            <option>ארון בגדים</option>
-        </select>
-        <br><br>
-        <input type="text" id="name" placeholder="שם מלא" style="width:95%; padding:10px;">
-        <br><br>
-        <button onclick="send()" style="width:100%; padding:15px; background:#333; color:white; border:none; border-radius:5px;">שלח לוואטסאפ</button>
+    <div class="features-row">
+        <div class="feature-item">
+            <div class="feature-icon">🥇</div>
+            <div><strong>איכות ללא פשרות</strong></div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⏱️</div>
+            <div><strong>עמידה מדויקת בזמנים</strong></div>
+        </div>
     </div>
+
+    <main class="main-content">
+        <h2 class="section-title">הקולקציות שלנו</h2>
+        
+        <div class="products-grid">
+            <!-- כרטיסיה 1 -->
+            <div class="product-card">
+                <div class="image-wrapper"><img src="kitchen1.jpeg.jpeg" alt="מטבח"></div>
+                <div class="product-details">
+                    <h3 class="product-title">צבע לתנור</h3>
+                    <div class="product-price-tag">2,400 ₪ למטר</div>
+                    <button class="buy-button" onclick="selectKitchen('צבע לתנור', '2,400 ₪ למטר')">לבחירת דגם זה</button>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 2 -->
+            <div class="product-card">
+                <div class="image-wrapper"><img src="kitchen2.jpeg.jpeg" alt="מטבח"></div>
+                <div class="product-details">
+                    <h3 class="product-title">צבע אקריל</h3>
+                    <div class="product-price-tag">2,500 ₪ למטר</div>
+                    <button class="buy-button" onclick="selectKitchen('צבע אקריל', '2,500 ₪ למטר')">לבחירת דגם זה</button>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 3 -->
+            <div class="product-card">
+                <div class="image-wrapper"><img src="kitchen3.jpeg.jpeg" alt="מטבח"></div>
+                <div class="product-details">
+                    <h3 class="product-title">פורמייקה</h3>
+                    <div class="product-price-tag">1,800 ₪ למטר</div>
+                    <button class="buy-button" onclick="selectKitchen('צבע לפורמייקה', '1,800 ₪ למטר')">לבחירת דגם זה</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container" id="lead-form">
+            <h2>פרטי הזמנה</h2>
+            <form onsubmit="validateAndSend(event)">
+                <label>סגנון נבחר:</label>
+                <select id="kitchen-style"></select>
+                <label>שם מלא:</label>
+                <input type="text" id="fullname" required>
+                <label>הערות:</label>
+                <textarea id="notes"></textarea>
+                <button type="submit" class="submit-button" style="margin-top: 20px;">שליחה לוואטסאפ</button>
+            </form>
+        </div>
+    </main>
 
     <script>
-        function selectStyle(s) {
-            document.getElementById('style').value = s;
-            document.getElementById('form').scrollIntoView({behavior:'smooth'});
+        function selectKitchen(style, price) {
+            document.getElementById('lead-form').style.display = 'block';
+            document.getElementById('kitchen-style').innerHTML = `<option>${style} (${price})</option>`;
+            document.getElementById('lead-form').scrollIntoView({behavior: 'smooth'});
         }
-        function send() {
-            const s = document.getElementById('style').value;
-            const n = document.getElementById('name').value;
+
+        function validateAndSend(e) {
+            e.preventDefault();
+            const s = document.getElementById('kitchen-style').value;
+            const n = document.getElementById('fullname').value;
             window.open(`https://wa.me/972584988888?text=היי דוד, אני מעוניין ב-${s}. שמי: ${n}`, '_blank');
         }
     </script>
